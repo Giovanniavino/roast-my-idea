@@ -49,12 +49,13 @@ def roast():
         user_content = messages[-1].get("content", "")
 
         response = client.models.generate_content(
-            model=MODEL,
-            contents=user_content,
-            config=types.GenerateContentConfig(
-                max_output_tokens=MAX_TOKENS,
-                temperature=1.0,  # più alta = più creativo/cattivo
-            ),
+    model=MODEL,
+    contents=user_content,
+    config=types.GenerateContentConfig(
+        max_output_tokens=MAX_TOKENS,
+        temperature=1.0,
+        thinking_config=types.ThinkingConfig(thinking_budget=0),
+    ),
         )
 
         text = (response.text or "").strip()
