@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 load_dotenv()
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from google import genai
@@ -17,7 +18,7 @@ CORS(app, resources={r"/api/*": {"origins": frontend_origin}})
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODEL = "gemini-2.5-flash"
-MAX_TOKENS = 1520  # Gemini a volte include un po' di "thinking", meglio tenerci margine
+MAX_TOKENS = 1500  # Margine abbondante: Gemini 2.5 usa parte dei token per il thinking interno
 
 
 @app.get("/")
@@ -49,16 +50,21 @@ def roast():
         user_content = messages[-1].get("content", "")
 
         response = client.models.generate_content(
-    model=MODEL,
-    contents=user_content,
-    config=types.GenerateContentConfig(
-        max_output_tokens=MAX_TOKENS,
-        temperature=1.0,
-        thinking_config=types.ThinkingConfig(thinking_budget=0),
-    ),
+            model=MODEL,
+            contents=user_content,
+            config=types.GenerateContentConfig(
+                max_output_tokens=MAX_TOKENS,
+                temperature=1.0,  # più alta = più creativo/cattivo
+            ),
         )
 
-        text = (response.text or "").strip()
+        # Gestione difensiva: a volte Gemini può restituire una risposta vuota
+        # (es. filtri di sicurezza). In quel caso restituiamo un fallback invece di crashare.
+        text = (response.text or "").strip() if response.text else ""
+
+        if not text:
+            app.logger.warning("Gemini returned empty response")
+            text = "(Il roaster è rimasto senza parole. Riprova.)"
 
         # Rispondiamo nel formato che il frontend già sa parsare
         # (stessa struttura dell'API Anthropic: content = [{type, text}])
