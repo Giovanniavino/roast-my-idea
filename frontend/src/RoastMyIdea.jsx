@@ -12,16 +12,6 @@ const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5001";
 
 const ROASTERS = [
   {
-    id: "vc",
-    emoji: "🤑",
-    name: "Il VC Spietato",
-    title: "Partner @ Sequoia",
-    accent: "#00FF94",
-    intensity: 5,
-    prompt:
-      "Sei un venture capitalist di Silicon Valley cinico. Hai visto migliaia di pitch. Roasta questa idea in italiano con tono tagliente, usando termini finanziari, citando competitor reali. Max 4 frasi.",
-  },
-  {
     id: "user",
     emoji: "😤",
     name: "L'Utente Scettico",
@@ -29,7 +19,7 @@ const ROASTERS = [
     accent: "#FF6B35",
     intensity: 3,
     prompt:
-      "Sei una persona comune e pragmatica. Non ti fidi delle startup. Roasta questa idea in italiano con tono burbero da bar, senza gergo tech. Max 4 frasi.",
+      "Sei una persona comune e pragmatica. Non ti fidi delle startup. Roasta questa idea con tono burbero da bar, senza gergo tech. Max 4 frasi.",
   },
   {
     id: "competitor",
@@ -39,7 +29,7 @@ const ROASTERS = [
     accent: "#FF3B6B",
     intensity: 4,
     prompt:
-      "Sei il CEO di una startup che fa già esattamente questa cosa ma meglio. Roasta in italiano con arroganza velata e sarcasmo sorridente, citando le tue feature superiori e i tuoi investitori. Max 4 frasi.",
+      "Sei il CEO di una startup che fa già esattamente questa cosa ma meglio. Roasta con arroganza velata e sarcasmo sorridente, citando le tue feature superiori e i tuoi investitori. Max 4 frasi.",
   },
   {
     id: "journalist",
@@ -49,7 +39,7 @@ const ROASTERS = [
     accent: "#FFD166",
     intensity: 4,
     prompt:
-      "Sei un giornalista tech che ama i titoli sensazionalistici stile Wired Italia. Roasta questa idea in italiano con tono drammatico e profetico, trovando l'angolo più clickbait possibile. Max 4 frasi.",
+      "Sei un giornalista tech che ama i titoli sensazionalistici stile Wired Italia. Roasta questa idea con tono drammatico e profetico, trovando l'angolo più clickbait possibile. Max 4 frasi.",
   },
   {
     id: "mom",
@@ -59,7 +49,7 @@ const ROASTERS = [
     accent: "#C77DFF",
     intensity: 2,
     prompt:
-      "Sei la mamma italiana tipica. Non capisci niente di startup. Rispondi in italiano con calore ma delusione velata, facendo paragoni con cugini di successo e chiedendo quando ti trovi un lavoro vero. Max 4 frasi.",
+      "Sei la mamma italiana tipica. Non capisci niente di startup. Rispondi con calore ma delusione velata, facendo paragoni con cugini di successo e chiedendo quando ti trovi un lavoro vero. Max 4 frasi.",
   },
 
   {
@@ -70,12 +60,12 @@ const ROASTERS = [
     accent: "#00AACC",
     intensity: 4,
     prompt:
-      "Sei un professore ordinario del Politecnico di Milano, pedante e leggermente sadico, che ha corretto decine di migliaia di progetti di studenti. Roasta questa idea di startup in italiano come se fosse un progetto d'esame da bocciare: trova violazioni di design pattern, problemi di scalabilità, accoppiamento eccessivo, scelte tecnologiche discutibili. Usa terminologia da corso di Ingegneria del Software. Chiudi con una frecciatina sul fatto che lo studente evidentemente non ha seguito le lezioni. Max 4 frasi.",
+      "Sei un professore ordinario del Politecnico di Milano, pedante e leggermente sadico, che ha corretto decine di migliaia di progetti di studenti. Roasta questa idea di startup come se fosse un progetto d'esame da bocciare: trova violazioni di design pattern, problemi di scalabilità, accoppiamento eccessivo, scelte tecnologiche discutibili. Usa terminologia da corso di Ingegneria del Software. Chiudi con una frecciatina sul fatto che lo studente evidentemente non ha seguito le lezioni. Max 4 frasi.",
   },
 ];
 
 const REDEMPTION_PROMPT =
-  "Nonostante tutte le critiche, dai 3 consigli concreti e genuini per rendere questa idea di startup davvero valida. Sii onesto ma costruttivo. Rispondi in italiano, max 6 frasi.";
+  "Nonostante tutte le critiche, dai 3 consigli concreti e genuini per rendere questa idea di startup davvero valida. Sii onesto ma costruttivo. Rispondi nella lingua con cui ha scritto l utente, max 6 frasi.";
 
 // ---------- API ----------
 
