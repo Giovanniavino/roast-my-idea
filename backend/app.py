@@ -17,7 +17,7 @@ CORS(app, resources={r"/api/*": {"origins": frontend_origin}})
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 MODEL = "gemini-2.5-flash"
-MAX_TOKENS = 400  # Gemini a volte include un po' di "thinking", meglio tenerci margine
+MAX_TOKENS = 1520  # Gemini a volte include un po' di "thinking", meglio tenerci margine
 
 
 @app.get("/")
