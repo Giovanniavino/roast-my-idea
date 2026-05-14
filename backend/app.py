@@ -14,7 +14,7 @@ CORS(app, resources={r"/api/*": {"origins": frontend_origin}})
 client = Groq(api_key=os.environ["GROQ_API_KEY"])
 
 MODEL = "llama-3.3-70b-versatile"
-MAX_TOKENS = 400  # Groq è veloce, non serve budget enorme — 400 token sono ~4 frasi
+MAX_TOKENS = 500
 
 
 @app.get("/")
@@ -36,7 +36,7 @@ def roast():
 
         user_content = messages[-1].get("content", "")
 
-        # Groq usa l'interfaccia OpenAI-compatibile
+        
         completion = client.chat.completions.create(
             model=MODEL,
             max_tokens=MAX_TOKENS,
