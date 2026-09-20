@@ -6,7 +6,7 @@
 
 Five personas — The Professor, The Audience, The Rival CEO, The Journalist, and Your Mother — take turns roasting your startup idea. Then the curtain falls, and a final **Redemption Arc** offers three genuine pieces of advice.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-E8B34C?style=for-the-badge&logo=render&logoColor=black)](https://roast-my-idea.onrender.com)
+[![Live Demo](https://img.shields.io/badge/demo-live-E8B34C?style=for-the-badge&logo=render&logoColor=black)]([https://roast-my-idea.onrender.com](https://roast-my-idea-1.onrender.com))
 [![Tech](https://img.shields.io/badge/stack-React%20%7C%20Flask%20%7C%20Gemini-6B1A1A?style=for-the-badge)](#-tech-stack)
 [![License](https://img.shields.io/badge/license-MIT-1A120C?style=for-the-badge)](#-license)
 
